@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    </head>
-    <body>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
     <div>
-        
+        <div id="app7">
+            <ol>
+                <todo-item v-for="item in grocryList" v-bind:todo="item"></todo-item>
+            </ol>
+        </div>
     </div>
-    </body>
+</body>
+<script>
+    // 使用 自定义组件
+    Vue.component("todo-item",
+        {
+            //todo-item 组件
+            //接受一个自定义属性 todo
+            //  v-bind:todo="item" 把vfor 的item 绑定给todo
+            props: ['todo'],
+            template:'<li>{{todo.text}}</li>'
+        })
+    var app7 = new Vue({
+        el: "#app7",
+        data: {
+            grocryList: [{ text: "苹果" }, { text: "李" }, { text: "葡萄" }]
+        }
+    })
+
+</script>
+
 </html>
